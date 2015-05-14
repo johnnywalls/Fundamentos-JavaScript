@@ -15,6 +15,18 @@
   var x = 7;
   console.log( 'El cuadrado de '+ x +' es ' + cuadrado(x) );
 
+  /* Los argumentos pasan en modalidad 'por valor', esto es, cualquier
+     modificación que realice la función sobre el valor de sus parámetros
+     no tendrá efecto fuera de la función. Sólo si el parámetro es un
+     objeto, se pueden modificar sus atributos en una función (sobre esto,
+     más detalles posteriormente) */
+  function modifica( numero ) {
+    numero = 5 * numero;
+    return numero;
+  }
+  console.log( 'modifica: ' + modifica(x) ); // 7*5=35
+  console.log( 'x: ' + x ); // x sigue valiendo 7
+
   /* Aquí tenemos una definición (recursiva) de una función para calcular
      el factorial de un número. Nótese que la función tiene un nombre "fac"
      que usa para invocarse de manera recursiva, y también la hemos almacenado
