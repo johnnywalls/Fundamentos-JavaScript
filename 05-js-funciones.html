@@ -56,9 +56,7 @@
   console.log( multiplicar() ); //75 = 15*5
 
   /* Ejemplo de funciones como valor de retorno */
-  /* Podemos especificar valores predeterminados para los parámetros de
-     funciones */
-  var construir_potencia = function(exponente = 2) {
+  var construir_potencia = function (exponente) {
     var potencia = function (base) { //función anónima
       return Math.pow(base, exponente);
     };
@@ -67,10 +65,10 @@
 
   /* Ahora podemos usar "construir_potencia" (una función anónima) para
      generar funciones dinámicamente */
+  var a_la_dos = construir_potencia( 2 ); // el nombre "cuadrado" ya está usado
   var cubo = construir_potencia( 3 );
   var cuarta = construir_potencia( 4 );
-  var dos = construir_potencia(); // el nombre "cuadrado" ya está usado
-  console.log( "El cuadrado de "+ x +" es " + dos(x) );
+  console.log( "El cuadrado de "+ x +" es " + a_la_dos(x) );
   console.log( "El cubo de "+ x +" es " + cubo(x) );
   console.log( "La cuarta potencia de "+ x +" es " + cuarta(x) );
 
