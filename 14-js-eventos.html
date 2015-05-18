@@ -32,9 +32,13 @@
     campo_texto.addEventListener("blur", function(){
       console.log( "El campo de texto perdió el foco" );
     });
+    /* Todos los manejadores de evento reciben como primer parámetro
+       un objeto con el evento desencadenado.  Si queremos tener
+       acceso a ciertas propiedades de dicho evento, o incluso
+       prevenir su ejecución, podemos incluirlo */
     campo_texto.addEventListener("keydown", function( e ){
       console.log( "Hemos recibido keydown en el campo de texto: "
-                   + e.which );
+                   + e.which ); // código de tecla presionada
     });
     campo_texto.addEventListener("change", function(){
       console.log( "Hubo un cambio en el valor del campo de texto" );
@@ -53,7 +57,7 @@
       console.log( "Hemos recibido un clic" );
       var destino = this.getAttribute("href");
       if ( confirm( "¿Está seguro de que desea ir hacia '"+ destino +"'?" ) ) {
-        alert('Adiós!!!');
+        alert('Adiós...');
       }
       else {
         // evitar la acción predeterminada (navegar hacia el enlace)
