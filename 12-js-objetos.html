@@ -164,7 +164,12 @@
        almacenaremos en una variable "privada" al objeto llamada _fecha */
     Object.defineProperty( pp, 'fecha_nacimiento', {
       get: function(){
-             return this._fecha.toLocaleString('es-ES');
+             if ( this._fecha ) {
+               return this._fecha.toLocaleString('es-ES');
+             }
+             else {
+               return undefined;
+             }
            },
       set: function( valor ) {
              if ( typeof valor === 'string' || typeof valor === 'number' ) {
@@ -179,8 +184,8 @@
            }
     });
     var estudiante2 = new Estudiante("Viviana", "Derecho");
+    console.log( estudiante2.fecha_nacimiento );
     estudiante2.fecha_nacimiento = '1990-04-02T13:50:00';
-    console.log( estudiante2 );
     console.log( estudiante2.fecha_nacimiento );
 
     estudiante2.fecha_nacimiento = new Date( '1991-04-02T13:50:00' );
