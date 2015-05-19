@@ -1,13 +1,10 @@
-
-// podemos definir variables con "var". Una variable puede almacenar
-// cualquier tipo de valor, como números, cadenas, arreglos u objetos
 var personas = [];
 
 function validar_telefono( tel ) {
   /* para simplificar en este ejemplo, asumimos que los teléfonos
    * son compuestos de 7 dígitos exclusivamente
    */
-  return ( typeof(tel) == 'string' && tel.length == 7 && /\D/.test(tel) === false );
+  return ( typeof(tel) == 'string' && tel.search(/^\d{7}$/) !== -1 );
 }
 
 function mostrar_nombres() {
@@ -26,7 +23,7 @@ function mostrar_nombres() {
 }
 
 function agregar_invitado( nom, ape, tel ) {
-  // verificamos que ambos valores (argumentos a la función) no estén vacíos
+  // validaciones básicas
   if ( nom != '' && ape != '' && validar_telefono(tel) ) {
     // creamos nuevo objeto con los datos suministrados
     var persona = { nombre: nom, apellido: ape, telefono: tel };
@@ -49,3 +46,21 @@ function ocultar_formulario() {
   document.getElementById('frm_nuevo_invitado').reset();
   document.getElementById('nuevo_invitado').style.display = 'none';
 }
+
+/* Asociar eventos */
+
+window.onload = mostrar_nombres;
+
+document.getElementById('link_agregar_invitado').addEventListener('click', function(e){
+  mostrar_formulario();
+  e.preventDefault();
+});
+
+document.getElementById('btn_agregar_invitado').addEventListener( 'click', function() {
+  agregar_invitado( document.getElementById('nombre').value,
+                    document.getElementById('apellido').value,
+                    document.getElementById('telefono').value
+                  );
+});
+
+document.getElementById('btn_cancelar').addEventListener('click', ocultar_formulario);

@@ -5,7 +5,7 @@ function validar_telefono( tel ) {
   /* para simplificar en este ejemplo, asumimos que los teléfonos
    * son compuestos de 7 dígitos exclusivamente
    */
-  return ( typeof(tel) == 'string' && tel.length == 7 && /\D/.test(tel) === false );
+  return ( typeof(tel) == 'string' && tel.search(/^\d{7}$/) !== -1 );
 }
 
 function mostrar_nombres() {
@@ -53,7 +53,10 @@ function ocultar_formulario() {
 /* En JQuery, comúnmente asociamos los eventos a elementos del documento
  * desde el bloque JavaScript, en lugar de hacerlo directamente en la
  * definición HTML.  Para agregar código que se ejecute al finalizar
- * la carga de la página (en lugar de <body onload="..."> podemos utilizar:
+ * la carga de la página (en lugar de <body onload="..."> podemos utilizar
+ * $( document ).ready.  Nótese que en nuestro caso no es estrictamente
+ * necesario, ya que estamos cargando el script al final del cuerpo del
+ * documento. Pero así podemos cargar el .js al final o en el <head>
  */
 $( document ).ready(function() {
   mostrar_nombres();

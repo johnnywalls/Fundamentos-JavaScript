@@ -5,7 +5,7 @@ function validar_telefono( tel ) {
   /* para simplificar en este ejemplo, asumimos que los teléfonos
    * son compuestos de 7 dígitos exclusivamente
    */
-  return ( typeof(tel) == 'string' && tel.length == 7 && /\D/.test(tel) === false );
+  return ( typeof(tel) == 'string' && tel.search(/^\d{7}$/) !== -1 );
 }
 
 function mostrar_persona( persona ) {
